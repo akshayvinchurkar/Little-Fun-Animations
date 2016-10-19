@@ -1,0 +1,58 @@
+$border-color: #333;
+
+@mixin border-radius($radius){
+	-webkit-border-radius: $radius;
+	-moz-border-radius:$radius;
+	-o-border-radius:$radius;
+	border-radius:$radius;
+}
+body{
+	display:flex;
+	flex-direction:row;	
+}
+.button{
+	margin:250px auto;
+	width: 100px;
+	height: 100px;
+	background:#333;
+	@include border-radius(100px);
+	transition:all 0.6s;
+	animation: breath 1s infinite alternate;
+	&:hover{
+		background:#324;
+		@include border-radius(10px);
+		-webkit-box-shadow: 0px 0px 0px 12px rgba(112,100,112,1);
+		-moz-box-shadow: 0px 0px 0px 12px rgba(112,100,112,1);
+		box-shadow: 0px 0px 0px 12px rgba(112,100,112,1);
+	}
+}
+.button1{
+	@extend .button;
+	border-top-right-radius:0px;
+	transition:all 2s;
+	animation: rotate 2s linear infinite;
+}
+
+// breath aniation
+@keyframes breath{
+	from{
+		background:green;
+	}
+	to{
+		transform:scale(0.8);		
+		background:red;
+	}
+}
+
+@keyframes breathh{
+	100%{
+		transform:scale(0.8);
+	}
+}
+
+//rotate animation
+@keyframes rotate{
+	100%{
+		transform:rotate(360deg);
+	}
+}
